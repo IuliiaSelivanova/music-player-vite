@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="./favicon.svg"
+      type="image/x-icon"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Music player</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="cover">
+        <div class="player-container">
+          <!-- header -->
+          <header class="player__header">
+            <img
+              src="/src/assets/images/note.svg"
+              alt="note"
+            />
+            <p class="logo">Music PLayer</p>
+          </header>
+
+          <!-- current song info -->
+          <div class="player__info">
+            <h1 class="marquee">
+              <span id="artist" class="artist"></span>
+            </h1>
+            <h2 class="marquee">
+              <span id="song" class="song"></span>
+            </h2>
+          </div>
+
+          <!-- progressbar current song -->
+          <div class="player__progress">
+            <div id="duration" class="player__progressBar">
+              <div id="progressbar" class="bar"></div>
+            </div>
+            <div id="mainTimer" class="timer">00:00</div>
+          </div>
+
+          <!-- кнопки управления текущим треком -->
+          <div class="player__controls">
+            <button
+              id="prev"
+              class="btn-action previous"
+            ></button>
+            <button
+              id="mainPlay"
+              class="btn-action play"
+            ></button>
+            <button
+              id="next"
+              class="btn-action next"
+            ></button>
+          </div>
+
+          <!-- треклист -->
+          <div class="player__tracklist"></div>
+
+          <!-- dropzone -->
+          <div id="dropzone" class="player__dropzone"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
