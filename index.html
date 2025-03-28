@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="./favicon.svg"
+      type="image/x-icon"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Music player</title>
+
+    <!-- styles -->
+    <script type="module" crossorigin src="/assets/index-DngF0l_Z.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DxFGAaFF.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="cover">
+        <div class="player-container">
+          <!-- header -->
+          <header class="player__header">
+            <img
+              src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M20%201.00001C20%200.706055%2019.8707%200.426991%2019.6464%200.236988C19.4221%200.0469841%2019.1256%20-0.0347118%2018.8356%200.0136136L6.8356%202.01361C6.35341%202.09398%206%202.51117%206%203.00001V14H3C1.34315%2014%200%2015.3432%200%2017C0%2018.6569%201.34315%2020%203%2020H5C6.65685%2020%208%2018.6569%208%2017V15V3.84713L18%202.18047V12H15C13.3431%2012%2012%2013.3432%2012%2015C12%2016.6569%2013.3431%2018%2015%2018H17C18.6569%2018%2020%2016.6569%2020%2015V13V1.00001ZM14%2015C14%2014.4477%2014.4477%2014%2015%2014H18V15C18%2015.5523%2017.5523%2016%2017%2016H15C14.4477%2016%2014%2015.5523%2014%2015ZM2%2017C2%2016.4477%202.44772%2016%203%2016H6V17C6%2017.5523%205.55228%2018%205%2018H3C2.44772%2018%202%2017.5523%202%2017Z'%20fill='white'%20fill-opacity='0.48'/%3e%3c/svg%3e"
+              alt="note"
+            />
+            <p class="logo">Music PLayer</p>
+          </header>
+
+          <!-- current song info -->
+          <div class="player__info">
+            <h1 class="marquee">
+              <span id="artist" class="artist"></span>
+            </h1>
+            <h2 class="marquee">
+              <span id="song" class="song"></span>
+            </h2>
+          </div>
+
+          <!-- progressbar current song -->
+          <div class="player__progress">
+            <div id="duration" class="player__progressBar">
+              <div id="progressbar" class="bar"></div>
+            </div>
+            <div id="mainTimer" class="timer">00:00</div>
+          </div>
+
+          <!-- кнопки управления текущим треком -->
+          <div class="player__controls">
+            <button
+              id="prev"
+              class="btn-action previous"
+            ></button>
+            <button
+              id="mainPlay"
+              class="btn-action play"
+            ></button>
+            <button
+              id="next"
+              class="btn-action next"
+            ></button>
+          </div>
+
+          <!-- треклист -->
+          <div class="player__tracklist"></div>
+
+          <!-- dropzone -->
+          <div id="dropzone" class="player__dropzone"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
