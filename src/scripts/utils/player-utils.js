@@ -1,3 +1,4 @@
+import { setMarquee } from "./animation-marquee";
 import { secondsToMinutes } from "./helpers";
 
 export function loadTrack(state) {
@@ -9,6 +10,8 @@ export function loadTrack(state) {
   document.getElementById("song").textContent = track.name;
   document.getElementById("mainTimer").textContent =
     secondsToMinutes(track.duration);
+
+  setMarquee();
 }
 
 export function togglePlayPause(state) {

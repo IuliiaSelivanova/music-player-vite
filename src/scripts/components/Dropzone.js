@@ -66,6 +66,9 @@ export function setupFileInput(state) {
       // если файлы выбраны, добавяем их в массив треков
       try {
         await handleFiles(fileInput.files, state);
+
+        // Сбрасываем значение input после обработки
+        fileInput.value = "";
       } catch (error) {
         console.error("Ошибка загрузки файлов:", error);
         alert("Ошибка! не удалось загрузить файлы");
@@ -76,32 +79,38 @@ export function setupFileInput(state) {
 
 // добавляем аудиофайлы в массив с треками
 async function handleFiles(files, state) {
-  const audioFiles = Array.from(files).filter((file) =>
-    file.type.startsWith("audio/"),
-  );
+  try {
+    const audioFiles = Array.from(files).filter((file) =>
+      file.type.startsWith("audio/"),
+    );
 
-  // ограничение на количество загружаемых файлов
-  if (audioFiles.length > 10) {
-    alert("Можно загрузить не более 10 файлов за раз");
-    return;
+    // ограничение на количество загружаемых файлов
+    if (audioFiles.length > 10) {
+      alert("Можно загрузить не более 10 файлов за раз");
+      return;
+    }
+
+    // Добавляем последовательно новые треки к текущему плейлисту
+    for (const file of audioFiles) {
+      const track = {
+        name: file.name.replace(/\.[^/.]+$/, ""), // Удаляем расширение
+        artist_name: "Локальный файл",
+        audio: URL.createObjectURL(file),
+        duration: await getAudioDuration(file),
+      };
+
+      state.tracks.push(track);
+    }
+  } catch (error) {}
+
+  // Если были успешно обработаны файлы, обновляем плейлист и воспроизводим первый трек
+  if (state.tracks.length > 0) {
+    renderTrackList(state);
+    state.currentIndex = 0;
+    loadTrack(state);
+  } else {
+    alert("Не удалось загрузить ни одного аудиофайла");
   }
-
-  // Добавляем новые треки к текущему плейлисту
-  for (const file of audioFiles) {
-    const track = {
-      name: file.name.replace(/\.[^/.]+$/, ""), // Удаляем расширение
-      artist_name: "Локальный файл",
-      audio: URL.createObjectURL(file),
-      duration: await getAudioDuration(file),
-    };
-
-    state.tracks.push(track);
-  }
-
-  // Обновляем плейлист и воспроизводим первый трек
-  renderTrackList(state);
-  state.currentIndex = 0;
-  loadTrack(state);
 }
 
 // установка длительности загруженных аудиофайлов
