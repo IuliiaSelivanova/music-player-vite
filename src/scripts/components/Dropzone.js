@@ -60,6 +60,13 @@ export function setupDropzone(state) {
 // установка слушателя на инпут выбора файлов (получение аудиофайлов и добавление в массив)
 export function setupFileInput(state) {
   const fileInput = document.getElementById("fileInput");
+  const dropzone = document.getElementById("dropzone");
+
+  // Обработчик для label (предотвращение всплытия)
+  const label = dropzone.querySelector(".fileInput-label");
+  label.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
 
   fileInput.addEventListener("change", async (e) => {
     if (fileInput.files.length) {

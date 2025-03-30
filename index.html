@@ -66,13 +66,16 @@
           <!-- dropzone -->
           <div id="dropzone" class="dropzone">
             <p>Перетащите аудиофайлы сюда или</p>
-            <label for="fileInput">выберите</label>
+            <label class="fileInput-label" for="fileInput"
+              >Выберите файлы</label
+            >
             <input
               class="dropzone__input"
               type="file"
               id="fileInput"
               accept="audio/*"
               multiple
+              style="display: none"
             />
           </div>
         </div>
