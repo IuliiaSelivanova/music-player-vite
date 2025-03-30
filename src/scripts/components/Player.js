@@ -2,9 +2,13 @@ import { renderTrackList } from "./TrackList.js";
 import { setupProgressBar } from "./ProgressBar.js";
 import { loadTrack } from "../utils/player-utils.js";
 import { togglePlayPause } from "../utils/player-utils.js";
+import {
+  setupDropzone,
+  setupFileInput,
+} from "./Dropzone.js";
 
 export class PlayerState {
-  constructor(tracks) {
+  constructor(tracks = []) {
     this.audio = new Audio();
     this.tracks = tracks;
     this.currentIndex = 0;
@@ -18,7 +22,6 @@ export class PlayerState {
 
 export function initPlayer(tracks) {
   const state = new PlayerState(tracks);
-  const playerElement = document.getElementById("app");
 
   // инициализация компонента
   renderTrackList(state);
@@ -27,6 +30,9 @@ export function initPlayer(tracks) {
 
   // загрузка первого трека
   loadTrack(state);
+
+  setupDropzone(state);
+  setupFileInput(state);
 
   return state;
 }

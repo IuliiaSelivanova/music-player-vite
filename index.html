@@ -19,9 +19,9 @@
   <body>
     <div id="app">
       <div class="cover">
-        <div class="player-container">
+        <div class="container">
           <!-- header -->
-          <header class="player__header">
+          <header class="header">
             <img
               src="/src/assets/images/note.svg"
               alt="note"
@@ -31,14 +31,9 @@
 
           <!-- current song info -->
           <div class="player__info">
-            <h1 class="marquee">
-              <span id="artist" class="artist"></span>
-            </h1>
-            <h2 class="marquee">
-              <span id="song" class="song"></span>
-            </h2>
+            <span id="artist" class="artist"></span>
+            <span id="song" class="song"></span>
           </div>
-
           <!-- progressbar current song -->
           <div class="player__progress">
             <div id="duration" class="player__progressBar">
@@ -46,7 +41,6 @@
             </div>
             <div id="mainTimer" class="timer">00:00</div>
           </div>
-
           <!-- кнопки управления текущим треком -->
           <div class="player__controls">
             <button
@@ -62,12 +56,21 @@
               class="btn-action next"
             ></button>
           </div>
-
           <!-- треклист -->
           <div class="player__tracklist"></div>
 
           <!-- dropzone -->
-          <div id="dropzone" class="player__dropzone"></div>
+          <div id="dropzone" class="dropzone">
+            <p>Перетащите аудиофайлы сюда или</p>
+            <label for="fileInput">выберите</label>
+            <input
+              class="dropzone__input"
+              type="file"
+              id="fileInput"
+              accept="audio/*"
+              multiple
+            />
+          </div>
         </div>
       </div>
     </div>
