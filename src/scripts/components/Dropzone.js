@@ -1,4 +1,3 @@
-import { loadTrack } from "../utils/player-utils";
 import { renderTrackList } from "./TrackList";
 
 // настройка дропзоны
@@ -114,7 +113,7 @@ async function handleFiles(files, state) {
   if (state.tracks.length > 0) {
     renderTrackList(state);
     state.currentIndex = 0;
-    loadTrack(state);
+    state.loadTrack();
   } else {
     alert("Не удалось загрузить ни одного аудиофайла");
   }

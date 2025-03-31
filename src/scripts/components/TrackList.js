@@ -1,8 +1,4 @@
 import { secondsToMinutes } from "../utils/helpers.js";
-import {
-  loadTrack,
-  togglePlayPause,
-} from "../utils/player-utils.js";
 
 export function renderTrackList(state) {
   const trackListElement = document.querySelector(
@@ -27,10 +23,18 @@ export function renderTrackList(state) {
       // обновляем текущий трек
       state.currentIndex = index;
 
-      // загружаем выбранный трек
-      loadTrack(state);
-      // запускаем выбранный трек
-      togglePlayPause(state);
+      // загружаем и сразу воспроизводим новый трек
+      state.isPlaying = true;
+      state.loadTrack().then(() => {
+        state.audio.play().catch((e) => {
+          console.error("Play error:", e);
+          state.isPlaying = false;
+          state.updatePlayButton();
+        });
+      });
+
+      // обновление кнопки
+      state.updatePlayButton();
     });
 
     trackListElement.appendChild(trackElement);

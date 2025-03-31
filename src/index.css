@@ -124,6 +124,25 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
+.btn-action.loading {
+  opacity: 0.7;
+  position: relative;
+}
+
+.btn-action.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
 .previous {
   background: rgba(255, 255, 255, 0.15)
     url("./assets/images/prev.svg") no-repeat center center;
@@ -282,4 +301,23 @@ body {
   -moz-animation: scroll 10s infinite linear;
   animation: scroll 10s infinite linear;
   animation-delay: 5s;
+}
+
+/* Индикатор загрузки */
+.player__loading::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
